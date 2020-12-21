@@ -16,7 +16,7 @@ class DataTransform {
      * Author: DQ
      */
     public static function xml2arr($xml) {
-        $encoding = mb_convert_encoding($xml, 'GBK', 'UTF-8');
+        $encoding = mb_convert_encoding($xml, 'UTF-8', 'GBK');
         $encoding = str_replace('GBK', 'UTF-8', $encoding);
         $rs       = XML::parse($encoding);
         if (empty($rs)) {
