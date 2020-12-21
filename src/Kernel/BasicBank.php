@@ -116,13 +116,11 @@ class BasicBank {
     /**
      * 请求序列号
      *
-     * @param bool $new
-     *
      * @return null|string
      * Author: DQ
      */
-    public function getSerialNo($new = true) {
-        if ($new) {
+    public function getSerialNo() {
+        if (empty($this->serialNo)) {
             $this->serialNo = date('YmdHis') . str_pad(rand(1, 999), 3, '0', STR_PAD_LEFT);
         }
 
