@@ -28,6 +28,9 @@ $config = [
 
 $lib = new \Bank\Actions\Main($config);
 
+// 获取银行列表
+$lib->getBanks();
+
 // 获取sessionId
 $lib->getSessionId();
 
