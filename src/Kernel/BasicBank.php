@@ -204,6 +204,9 @@ class BasicBank {
             $this->registerApi(__FUNCTION__, func_get_args());
             $response = RequestTool::post($url, $data, $headers);
 
+            $response = mb_convert_encoding($response, 'UTF-8', 'GBK');
+            $response = str_replace('GBK', 'UTF-8', $response);
+
             return $response;
         } catch (InvalidResponseException $e) {
             if (!$this->_isTry) {

@@ -182,7 +182,7 @@ class Main extends BasicBank {
     public function getSessionId() {
         $url = $this->getSessionUrl();
 
-        $serialNo = $this->getSerialNo();
+        $serialNo = date('YmdHis') . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT);
         $reqTime  = $this->getReqTime();
         $userID   = $this->config['userID'];
         $userPWD  = $this->config['userPWD'];
