@@ -5,7 +5,6 @@ namespace Bank\Actions;
 use Bank\Exceptions\InvalidResponseException;
 use Bank\Kernel\BasicBank;
 use Bank\Tools\Cache;
-use Bank\Tools\XML;
 
 class Main extends BasicBank {
 
@@ -258,6 +257,7 @@ class Main extends BasicBank {
         $reqTime  = $this->getReqTime();
 
         $xml  = '<?xml version="1.0" encoding="GBK"?><BOSEBankData>' . sprintf('<opReq><serialNo>%s</serialNo>', $serialNo) . sprintf('<reqTime>%s</reqTime>', $reqTime) . sprintf('<ReqParam><ACNO>%s</ACNO>', $acno) . sprintf('<VIRACNO>%s</VIRACNO>', $viracno) . sprintf('<OPAC>%s</OPAC>', $opac) . sprintf('<NAME>%s</NAME>', $name) . sprintf('<PBNO>%s</PBNO>', $pbno) . sprintf('<TRAM>%.2f</TRAM>', $tram) . sprintf('<USAG>%s</USAG>', $usag) . sprintf('<REMK>%s</REMK>', $remk) . sprintf('<PATH>%s</PATH>', $path) . sprintf('<PREDATE>%s</PREDATE>', $predate) . '</ReqParam></opReq></BOSEBankData>';
+        $xml  = mb_convert_encoding($xml, 'GBK', 'UTF-8');
         $sign = $this->getSign($xml);
 
         $sessionId = $this->getSession();
@@ -293,6 +293,7 @@ class Main extends BasicBank {
         $reqTime  = $this->getReqTime();
 
         $xml  = '<?xml version="1.0" encoding="GBK"?><BOSEBankData>' . sprintf('<opReq><serialNo>%s</serialNo>', $serialNo) . sprintf('<reqTime>%s</reqTime>', $reqTime) . sprintf('<ReqParam><OSNO>%s</OSNO>', $osno) . '</ReqParam></opReq></BOSEBankData>';
+        $xml  = mb_convert_encoding($xml, 'GBK', 'UTF-8');
         $sign = $xml;
 
         $sessionId = $this->getSession();

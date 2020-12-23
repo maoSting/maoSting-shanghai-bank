@@ -15,6 +15,7 @@
 
 ## Usage
 ```
+// 编码为utf-8，会自动转化为gbk
 
 // 配置
 $config = [
@@ -35,10 +36,12 @@ $lib->getBanks();
 $lib->getSessionId();
 
 // 转账
-$lib->transferCrossBank();
+$actionLib->setSerialNo($xxx); // 设置交易序列
+$lib->transferCrossBank($xxxxxxxx...);
 
 // 查询转账结果
-$lib->queryTransferResult();
+$actionLib->setSerialNo(null);
+$lib->queryTransferResult($xxx);
 
 // 响应体
 $lib->response;
