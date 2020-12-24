@@ -22,9 +22,6 @@ class DataTransform {
         if (empty($rs)) {
             throw new InvalidResponseException('invalid response.', 0);
         }
-        if (isset($rs['opRep']['retCode']) && $rs['opRep']['retCode'] != 0) {
-            throw new InvalidResponseException($rs['opRep']['errMsg'], $rs['opRep']['retCode']);
-        }
 
         return $rs;
     }
